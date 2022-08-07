@@ -5,9 +5,12 @@ var answer1 =document.querySelector("li1");
 var answer2=document.querySelector("li2");
 var answer3=document.querySelector("li3");
 var answer4=document.querySelector("li4");
+var feedback=document.querySelector(".feedback");
 var correctAnswerCounter = 0
 var activeQuestion = 0;
-var answerCorrect=true;
+var playerChoice = ""
+var startButton = document.querySelector(".startButton");
+var timerCount=0
 
 // var question1 = "How many rows a whiskers does a cat have?" //4
 // var question2 = "How fast can a greyhound run?" //45 mph
@@ -85,15 +88,29 @@ var questions = [
 
 
 
-
+startButton.addEventListener("click",startGame);
 
 function startGame(){
+console.log("The button works");
+timerElement.setAttribute("style","display:inline-block");
+timerCount=60;
+startTimer();
+// need for loop to append each piece of the answerChoices object to fill up answers list item, and a logic operation to see if button pressed for choice matches correct answer
+
+
+
+
+
+
+
+
 
 }
 
 
-var timerCount=100;
+var timerCount=0
 function startTimer(){
+    startButton.setAttribute("style","display:none;");
     timer=setInterval(function(){
     timerCount--;
     timerElement.textContent=timerCount + " seconds left";  //this timer is working
@@ -104,6 +121,21 @@ function startTimer(){
 },1000);
 }
 
+function acquireQuestion(){
+
+}
 function isQuestionCorrect(){
 
+    if (playerChoice===questions[activeQuestion].correctAnswer){
+        feedback.textContent("You answered that one correctly");
+        correctAnswerCounter++
+    }
+    else{
+        feedback.textContent("You got that one wrong. The correct answer was " +questions[activeQuestion].correctAnswer);
+    }
+
+}
+
+function endGame(){
+    console.log("These Nuts")
 }

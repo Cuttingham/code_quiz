@@ -1,0 +1,22 @@
+body{
+    background-color:#364338;
+    color:blue;
+}
+.startButton{
+    font-size:300%;
+    background-color:red;
+    color:orange;
+    border: 5px solid black;
+    padding: 10px;
+    margin-left:550px;
+}
+header{
+    color:blue;
+   font-size:200%;
+}
+.timer{
+    color:red;
+    margin-left:550px;
+    display:none;
+  
+}
