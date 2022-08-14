@@ -1,10 +1,10 @@
 var timerElement = document.querySelector(".timer");
 var question = document.querySelector(".question");
 var answers = document.querySelector(".answers");
-var answer1 =document.querySelector("li1");
-var answer2=document.querySelector("li2");
-var answer3=document.querySelector("li3");
-var answer4=document.querySelector("li4");
+var answer1=document.querySelector(".li1");
+var answer2=document.querySelector(".li2");
+var answer3=document.querySelector(".li3");
+var answer4=document.querySelector(".li4");
 var feedback=document.querySelector(".feedback");
 var correctAnswerCounter = 0
 var activeQuestion = 0;
@@ -91,16 +91,12 @@ var questions = [
 startButton.addEventListener("click",startGame);
 
 function startGame(){
-console.log("The button works");
 timerElement.setAttribute("style","display:inline-block");
 timerCount=60;
 startTimer();
+
+
 // need for loop to append each piece of the answerChoices object to fill up answers list item, and a logic operation to see if button pressed for choice matches correct answer
-
-
-
-
-
 
 
 
@@ -108,30 +104,44 @@ startTimer();
 }
 
 
-var timerCount=0
 function startTimer(){
     startButton.setAttribute("style","display:none;");
     timer=setInterval(function(){
     timerCount--;
     timerElement.textContent=timerCount + " seconds left";  //this timer is working
-    if(timerCount===0){
-        clearInterval(timer)
+
+    if (timerCount===0){
+        clearInterval(timer);
         endGame();
     }
 },1000);
 }
 
 function acquireQuestion(){
+    // question.textContent=("Test");
+    var displayQuestion=(questions[activeQuestion].questionText);
+    var displayAnswer1 =(questions[activeQuestion].answerChoices[0]);
+    var displayAnswer2 =(questions[activeQuestion].answerChoices[1]);
+    var displayAnswer3 =(questions[activeQuestion].answerChoices[2]);
+    var displayAnswer4 =(questions[activeQuestion].answerChoices[3]);
 
+    question.textContent=displayQuestion; // properly displays 
+    answer1.textContent=displayAnswer1;
+    answer2.textContent=displayAnswer2;
+    answer3.textContent=displayAnswer3;
+    answer4.textContent=displayAnswer4;
 }
 function isQuestionCorrect(){
 
     if (playerChoice===questions[activeQuestion].correctAnswer){
         feedback.textContent("You answered that one correctly");
         correctAnswerCounter++
+        acquireQuestion();
     }
     else{
         feedback.textContent("You got that one wrong. The correct answer was " +questions[activeQuestion].correctAnswer);
+        acquireQuestion();
+        timerCount=timerCount-5;
     }
 
 }

@@ -6,8 +6,9 @@ body{
     font-size:300%;
     background-color:red;
     color:orange;
-    border: 5px solid black;
+    border: 5px solid blue;
     padding: 10px;
+    cursor:grab;
     margin-left:550px;
 }
 header{
@@ -18,5 +19,21 @@ header{
     color:red;
     margin-left:550px;
     display:none;
-  
 }
+.question,
+.answers {
+    padding-top:100px;
+    text-align:center;
+    justify-content:center;
+}
+
+.question{
+    font-size:150%;
+}
+.answers{
+    font-size:175%;
+    display:block;
+    padding:30px;
+    margin:30px;
+}
+
